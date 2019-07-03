@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="/views/css/reset.css"  rel="stylesheet"/>
+    <link href="/views/css/common.css"  rel="stylesheet"/>
+</head>
+<body>
+<%- include('head.html',header) %>
+<h1>普通模版</h1>
+<h2><%=data.title%></h2>
+<h1>ejs循环输出模版</h1>
+<ul>
+<% for(var i = 0; i<data.list.length; i++){%>
+<li><%= data.list[i] %></li>
+<%}%>
+</ul>
+<img width="100" src="/views/images/timg.jpg">
+<h1><%= data.id %></h1>
+<h2>原文输出标签</h2>
+<%- data.content %>
+<h2>条件判断</h2>
+<% if(data.num > 20){ %>
+大于20
+<% }else{ %>
+小于20
+<% } %>
+</body>
+<script src="/js/jquery.js"></script>
+<script>
+    $('body').css({'background': '#00c'})
+
+</script>
+</html>

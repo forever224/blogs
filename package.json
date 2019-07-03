@@ -1,0 +1,25 @@
+{
+  "name": "webchecker-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ejs": "^2.6.1",
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.8",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-static-router": "^1.2.0",
+    "koa-views": "^6.1.5",
+    "log4js": "^3.0.6",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.14",
+    "path": "^0.12.7"
+  }
+}

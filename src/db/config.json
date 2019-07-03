@@ -1,0 +1,18 @@
+{
+  "DB_HOST": "193.112.105.129",
+  "DB_POST": 27017,
+  "DB_DATABASE": "zhongfm",
+  "DB_USER": "",
+  "DB_PASS": "",
+
+  "RDS_HOST": "192.168.32.229",
+  "RDS_POST": 6901,
+  "RDS_SENTINEL": [{ "host": "192.168.32.101", "port": 26301 }, { "host": "192.168.32.102", "port": 26302 }, { "host": "192.168.32.103", "port": 26303 }],
+  "RDS_DATABASE": 5,
+
+  "CLIENT_HOST": "localhost",
+  "CLIENT_POST": 8088
+
+
+
+}

@@ -1,0 +1,23 @@
+blockquote,body,button,dd,dl,dt,fieldset,h1,h2,h3,h4,h5,h6,hr,input,lengend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0;}
+body,button,input,select,textarea{color:#666;font:14px/22px "Microsoft YaHei";}
+body{background: #f5f7f9;font-size:14px; border-top:3px solid #3a8ee6;}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4,h5,h6{font-size:100%;}
+* h1,* h2,* h3,* h4,* h5,* h6{margin:0;}
+li,ol,ul{list-style:none;}
+a{color:#666;text-decoration:none;word-wrap:break-word;}
+a:hover{color:#010101;text-decoration:none;}
+legend{color:#000;}
+fieldset,img{border:none;}
+button,input,select,textarea{font-size:100%;}
+body{overflow:hidden;width:100%;min-width:1200px;}
+table{border-collapse:collapse;border-spacing:0;}
+html{overflow-y:scroll;}
+em,i{font-style:normal;}
+.fl{float:left;}
+.fr{float:right;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.clear{clear:both;height:0;}

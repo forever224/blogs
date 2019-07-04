@@ -1,7 +1,11 @@
-
-
-class Header {
+const Base = require('../_base');
+const ejs = require('ejs');
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
+class Header extends Base{
     constructor(){
+        super('header');
         this.data = {
             logo:'xxxx',
             nav:[{
@@ -19,4 +23,13 @@ class Header {
             }]
         };
     }
+    getHtml(href){
+        let html = fs.readFileSync(path.resolve( __dirname + `/view.html`)).toString('utf-8');
+        let item = _.find(this.data.nav, { href });
+        if(item){
+            item.cur = true;
+        }
+        return ejs.render(html, this.data);
+    }
 }
+module.exports = Header;

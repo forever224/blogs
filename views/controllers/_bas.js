@@ -1,6 +1,7 @@
 const Router = require('koa-router');
-const publicData = require('./public');
 const _ = require('lodash');
+const Header = require('../template/header/data');
+const Footer = require('../template/footer/data');
 class BasController {
     constructor() {
         this.originalUrl = [];
@@ -16,19 +17,19 @@ class BasController {
             try{
                 let result = handler(ctx);
                 let data = null;
-                //如果执行的结果是Promise，我们将有通过await来优化执行的流程。
                 if (result instanceof Promise) {
                     data = await result;
                 } else {
                     data = result;
                 }
-                let item = _.find(publicData.header.nav, { href: ctx.originalUrl });
-                console.log(ctx.originalUrl, '11111111122', item)
-                if(item){
-                    item.cur = true;
-                }
-                await ctx.render(htmlName, { ...publicData, data });
+                data.header = new Header().getHtml(ctx.originalUrl);
+                data.footer = new Footer().getHtml();
+                data.title = data.title? data.title : '默认标题';
+                data.desc = data.desc? data.desc : '默认描述';
+                data.keywords = data.keywords? data.keywords : '默认关键词';
+                await ctx.render(htmlName, data);
             }catch (e) {
+                throw e;
                 console.log('goto 404');
                 ctx.response.redirect('/404');
             }

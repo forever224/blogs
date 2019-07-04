@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <link href="/views/css/reset.css"  rel="stylesheet"/>
-    <link href="/views/css/common.css"  rel="stylesheet"/>
-    <link href="//at.alicdn.com/t/font_1274609_gzo3kvwcwsi.css"  rel="stylesheet"/>
+    <%- include('meta.html') %>
 </head>
 <body>
     <div class="main">
-        <%- include('header.html',header) %>
+        <%- header %>
         <div class="content">
             <h1>内容部分</h1>
         </div>
         <div class="clear"></div>
-        <%- include('footer.html',footer) %>
+        <%- footer %>
     </div>
 </body>
 <script src="/views/js/jquery.js"></script>
 <script>
-
 
 </script>
 </html>

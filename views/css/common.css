@@ -1,10 +1,11 @@
 .main{width:1200px;margin: 0 auto;}
 .header{width:240px;float:left; background: #fff;}
-.content{ width:920px;float:right;background: #fff; }
+.content{ width:900px;float:right;background: #fff;padding:20px; }
 .logo{height:100px;background: #3a8ee6;text-align: center;color:#fff;}
 .logo h1{font-size:20px;padding-top:27px; font-weight: normal;}
 .nav{padding:10px 0 20px; line-height: 40px;}
 .nav li{padding:0 20px;position: relative;}
+.nav li a{display: block;}
 .nav i{margin-right: 10px;}
 .nav .cur{background: #f1f1f1;}
 .nav .cur a{color: #3a8ee6}

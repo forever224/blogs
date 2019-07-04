@@ -8,7 +8,7 @@ const view = require('./views/controllers').router;
 
 //ejs模板配置
 const views = require('koa-views');
-app.use(views( './views/html', {map: { html: 'ejs' } } ) );
+app.use(views( './views/page', {map: { html: 'ejs' } } ) );
 
 //文件上传
 const koaBody = require('koa-body');

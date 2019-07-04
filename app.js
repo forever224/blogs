@@ -20,7 +20,7 @@ app.use(koaBody({
 }));
 
 app.use(bodyParser()); //参数格式化
-app.use(oauth.checkOauth(router.disallow)); // 接口登录拦截
+app.use(oauth.checkOauth(router.disallow, view.originalUrl)); // 接口登录拦截
 
 //路由
 app.use(router.routes()).use(router.allowedMethods());
@@ -37,9 +37,7 @@ app.use(static( { dir:"./views/css", router:'/views/css' } ));
 app.use(static( { dir:"./views/js", router:'/views/js' } ));
 app.use(static( { dir:"./views/images", router:'/views/images' } ));
 
-app.use(ctx => {
-    ctx.response.redirect('/404');
-})
+
 
 app.listen('80',() => {
     console.log('starting at ', 'http://localhost:80');

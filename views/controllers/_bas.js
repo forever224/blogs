@@ -1,10 +1,13 @@
 const Router = require('koa-router');
 const publicData = require('./public');
+const _ = require('lodash');
 class BasController {
     constructor() {
+        this.originalUrl = [];
         this.router = new Router();
     }
     addRoute(uri = '/', handler, htmlName) {
+        this.originalUrl.push(uri);
         this.router.get(uri, this.httpWrapper(htmlName, handler));
     }
     httpWrapper(htmlName, handler) {
@@ -18,6 +21,11 @@ class BasController {
                     data = await result;
                 } else {
                     data = result;
+                }
+                let item = _.find(publicData.header.nav, { href: ctx.originalUrl });
+                console.log(ctx.originalUrl, '11111111122', item)
+                if(item){
+                    item.cur = true;
                 }
                 await ctx.render(htmlName, { ...publicData, data });
             }catch (e) {

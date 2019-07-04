@@ -9,11 +9,10 @@ let AdminLogsService = require('./services/admin/admin.logs.service'),
  * @param disallow {Array} 数据接口，查看controllers/index.js
  * @returns {function(*, *)}
  */
-let checkOauth = (disallow) => {
+let checkOauth = (disallow, originalUrl) => {
     //不需要验证的接口,结尾匹配
     let allow =['/admin/index.html', '/admin/login', '/admin/create', '/upload/img'];
     return async (ctx, next) => {
-        console.log('访问了：',ctx.originalUrl);
         let disallowFlg = new RegExp(disallow.join('&|') + '$|' + disallow.join('/|') + '/').test(ctx.originalUrl);
         let allowFlg = new RegExp(allow.join('$|') + '$').test(ctx.originalUrl);
         if(disallowFlg && !allowFlg){

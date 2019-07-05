@@ -3,7 +3,7 @@ const BaseCtr = require('./_bas');
 class Controller extends BaseCtr{
     constructor(){
         super();
-        this.addRoute('/', this.getData, 'index');
+        this.addRoute('/about', this.getData, 'about');
     }
     getData(ctx){
         let title = '你好ejs';

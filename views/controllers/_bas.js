@@ -22,8 +22,8 @@ class BasController {
                 } else {
                     data = result;
                 }
-                data.header = new Header().getHtml(ctx.originalUrl);
-                data.footer = new Footer().getHtml();
+                data.header = await new Header().getHtml(ctx.originalUrl);
+                data.footer = await new Footer().getHtml();
                 data.title = data.title? data.title : '默认标题';
                 data.desc = data.desc? data.desc : '默认描述';
                 data.keywords = data.keywords? data.keywords : '默认关键词';

@@ -2,12 +2,197 @@
 <html>
 <head>
     <%- include('meta.html') %>
+    <style>
+        .box-tit{margin:0 20px 0px; font-size:18px;font-weight: bold;height:40px; line-height:40px;border-bottom:1px solid #f1f1f1;}
+        .box-tit span{display: inline-block;padding:0 5px;border-bottom:2px solid #3a8ee6; transition: padding-right .5s;}
+        .box-tit:hover span{padding-right:50px;}
+        .new-item{padding: 30px 20px;border-bottom:1px solid #f1f1f1;}
+        .new-item:nth-last-child(1){border:0;}
+        .new-item-tit{font-size:16px;height:40px;line-height: 40px;overflow: hidden;margin-bottom:10px;font-weight: bold;}
+        .new-item-tit a:hover{}
+        .new-item-img{width: 200px;height:120px;float: left;margin-right:20px;overflow: hidden;}
+        .new-item-img img{width: 200px;height:120px;border-radius: 5px; transition: all .5s;}
+        .new-item-img:hover img { transform: scale(1.1); }
+        .new-item-desc{padding-top:10px;line-height: 24px;height:72px;overflow: hidden;}
+        .new-item-time{float: right;font-size: 14px;}
+        .new-item-time img{vertical-align: middle;width: 30px;height:30px;border-radius: 50%; transform: rotate(0deg);margin-left:10px;transition: all .5s;}
+        .new-item:hover .new-item-time img{ transform: rotate(360deg);}
+        .new-item-foot{margin-top:20px;}
+        .new-item-key{float:left;}
+        .new-item-key a{display: inline-block;height:26px;line-height: 26px;border-radius: 5px;background: #f1f1f1;padding:0 10px;margin-right:10px;}
+        .new-item-btn{background: #3a8ee6; color:#fff;border:0;padding:5px 20px;float: right; transition: all .5s;cursor: pointer;}
+        .new-item-btn:hover{background: #c00;}
+
+        .pagination {
+            margin: 0px 0 40px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        .page-number-basic,
+        .pagination .prev,
+        .pagination .next,
+        .pagination .page-number,
+        .pagination .space {
+            display: inline-block;
+            position: relative;
+            top: -1px;
+            margin: 0 10px;
+            padding: 0 10px;
+            line-height: 30px;
+        }
+        .pagination .prev,
+        .pagination .next,
+        .pagination .page-number {
+            border-bottom: 0;
+            border-top: 1px solid #eee;
+            transition-property: border-color;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0s;
+        }
+        .pagination .prev:hover,
+        .pagination .next:hover,
+        .pagination .page-number:hover {
+            border-top-color: #222;
+        }
+        .pagination .space {
+            padding: 0;
+            margin: 0;
+        }
+        .pagination .prev {
+            margin-left: 0;
+        }
+        .pagination .next {
+            margin-right: 0;
+        }
+        .pagination .page-number.current {
+            color: #fff;
+            background: #ccc;
+            border-top-color: #ccc;
+        }
+
+    </style>
 </head>
 <body>
     <div class="main">
         <%- header %>
         <div class="content">
-            <h1>内容部分</h1>
+            <div class="box">
+                <div class="box-tit"><span>最新博文</span></div>
+                <div class="box-nr">
+                    <div class="new-item">
+                        <div class="new-item-tit">
+                            <div class="new-item-time">
+                                2019-07-05
+                                <img src="/views/images/photo.png" alt="">
+                            </div>
+                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
+                        </div>
+                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
+                        <div class="new-item-desc">
+                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
+                        </div>
+                        <div class="clear"></div>
+                        <div class="new-item-foot">
+                            <div class="new-item-key">
+                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
+                            </div>
+                            <button class="new-item-btn">阅读全文</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="new-item">
+                        <div class="new-item-tit">
+                            <div class="new-item-time">
+                                2019-07-05
+                                <img src="/views/images/photo.png" alt="">
+                            </div>
+                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
+                        </div>
+                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
+                        <div class="new-item-desc">
+                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
+                        </div>
+                        <div class="clear"></div>
+                        <div class="new-item-foot">
+                            <div class="new-item-key">
+                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
+                            </div>
+                            <button class="new-item-btn">阅读全文</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="new-item">
+                        <div class="new-item-tit">
+                            <div class="new-item-time">
+                                2019-07-05
+                                <img src="/views/images/photo.png" alt="">
+                            </div>
+                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
+                        </div>
+                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
+                        <div class="new-item-desc">
+                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
+                        </div>
+                        <div class="clear"></div>
+                        <div class="new-item-foot">
+                            <div class="new-item-key">
+                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
+                            </div>
+                            <button class="new-item-btn">阅读全文</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="new-item">
+                        <div class="new-item-tit">
+                            <div class="new-item-time">
+                                2019-07-05
+                                <img src="/views/images/photo.png" alt="">
+                            </div>
+                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
+                        </div>
+                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
+                        <div class="new-item-desc">
+                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
+                        </div>
+                        <div class="clear"></div>
+                        <div class="new-item-foot">
+                            <div class="new-item-key">
+                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
+                            </div>
+                            <button class="new-item-btn">阅读全文</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="new-item">
+                        <div class="new-item-tit">
+                            <div class="new-item-time">
+                                2019-07-05
+                                <img src="/views/images/photo.png" alt="">
+                            </div>
+                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
+                        </div>
+                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
+                        <div class="new-item-desc">
+                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
+                        </div>
+                        <div class="clear"></div>
+                        <div class="new-item-foot">
+                            <div class="new-item-key">
+                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
+                            </div>
+                            <button class="new-item-btn">阅读全文</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-icon-test1"></i></a>
+                <span class="page-number current">1</span>
+                <a class="page-number" href="#">2</a>
+                <a class="extend next" rel="next" href="#"><i class="iconfont icon-icon-test3"></i></a>
+            </div>
         </div>
         <div class="clear"></div>
         <%- footer %>

@@ -1,6 +1,6 @@
 .main{width:1200px;margin: 0 auto;}
 .header{width:240px;float:left; background: #fff;}
-.content{ width:900px;float:right;background: #fff;padding:20px; }
+.content{ width:940px;float:right;background: #fff;padding:20px 0; }
 .logo{height:100px;background: #3a8ee6;text-align: center;color:#fff;}
 .logo h1{font-size:20px;padding-top:27px; font-weight: normal;}
 .nav{padding:10px 0 20px; line-height: 40px;}

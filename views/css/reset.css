@@ -8,7 +8,7 @@ h4,h5,h6{font-size:100%;}
 * h1,* h2,* h3,* h4,* h5,* h6{margin:0;}
 li,ol,ul{list-style:none;}
 a{color:#666;text-decoration:none;word-wrap:break-word;}
-a:hover{color:#010101;text-decoration:none;}
+a:hover{color:#3a8ee6;text-decoration:none;}
 legend{color:#000;}
 fieldset,img{border:none;}
 button,input,select,textarea{font-size:100%;}
@@ -21,3 +21,8 @@ em,i{font-style:normal;}
 .pr{position:relative;}
 .pa{position:absolute;}
 .clear{clear:both;height:0;}
+
+.btn{ position: relative; z-index: 10; overflow: hidden; -webkit-transition: all .5s; transition: all .5s; }
+.btn:before {content: "";background: #3a8ee6;-webkit-transform: skew(45deg, 0);transform: skew(45deg, 0);width: 0px;height: 100%;position: absolute;top: 0px;left: -10px;z-index: -1;-webkit-transition: all .5s;transition: all .5s;}
+.btn:hover {color: #fff;}
+.btn:hover:before {width: 150%;}

@@ -2,6 +2,7 @@
 node_modules
 app/node_modules
 system/node_modules
+logs
 /dist
 
 # local env files

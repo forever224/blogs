@@ -5,11 +5,13 @@ import mutations from './mutations';
 import state from './state';
 import getters from './getters';
 import admin from './modules/admin'
+import nav from './modules/nav'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules:{
-        admin
+        admin,
+        nav
     },
     state,
     getters,

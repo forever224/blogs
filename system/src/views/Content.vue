@@ -50,9 +50,9 @@
 </script>
 <style lang="scss">
     .main{transition: padding-left .3s;}
-    .main1{padding-left:220px;}
+    .main1{padding-left:220px;padding-right:20px;}
     .main2{padding-left:84px;}
-    .collapse{height:50px; border-bottom:1px solid #ccc;line-height: 50px;}
+    .collapse{height:50px; border-bottom:1px solid #ccc;line-height: 50px;margin-bottom:30px;}
     .collapse-icon{display: inline-block;}
     .collapse-bread{display: inline-block;padding-left:30px;font-size: 14px;color:#666;}
     .no-redirect{ color: #97a8be; cursor: text;}

@@ -1,98 +1,87 @@
 import axios from 'axios';
-axios.defaults.baseURL = window.location.origin;
-export default class zfmHttp {
+import { MessageBox, Message } from 'element-ui'
+
+export default class Http {
     /**
      * 通用发送请求
      * @param params
-     * @param isRaw 是否取原始数据
      * @returns {Promise}
      */
-    static httpSend(params, isRaw) {
+    static httpSend(params) {
         //每次都会去查token是不是存在的,防止刷新数据丢失
-        axios.defaults.headers.common['Authorization'] =
-            axios.defaults.headers.common['Authorization'] || window.sessionStorage.Authorization;
-
+        axios.defaults.headers.common['authorization'] = window.sessionStorage.authorization || axios.defaults.headers.common['authorization'];
+        axios.defaults.headers.common['phone'] = window.sessionStorage.phone || axios.defaults.headers.common['phone'];
         return new Promise((resolve, reject) => {
             axios(params).then(res => {
+                console.log(Message, 'Message');
+                Message({
+                    message: res.message || 'error',
+                    type: 'error',
+                    duration: 5 * 1000
+                })
                 var data = res.data;
-                if (isRaw) {
-                    resolve(data);
+                if (data.isSuccess) {
+                    resolve(data.data);
                 } else {
-                    if (data.isSuccess) {
-                        resolve(data.data);
-                    } else {
-                        reject(data.message || data.error);
-                    }
+                    reject(data.message || data.error);
                 }
             }, error => {
                 var status = error.request.status;
                 this.validateLogin(status);
                 var data = error.request.responseText;
-                data = data ? JSON.parse(data) : {message:'未知错误'};
+                data = data ? JSON.parse(data) : {message: '未知错误'};
+                Message({
+                    message: data.message,
+                    type: 'error',
+                    duration: 5 * 1000
+                })
                 reject(data.message || data.error);
             });
         });
     }
 
+    /**
+     * 错误返回码判断
+     * @param status
+     */
     static validateLogin(status) {
         switch (status) {
             case 401:
-                window.location.href = axios.defaults.baseURL + '/#/login';
+                console.log('请登录！',window.location.href.match(/^http.*:\d{2}/));
+                window.location.href = window.location.href.match(/^http.*:\d{2}/)[0] + '/#/login';
                 break;
         }
     }
 
-    static httpGet(url, params, isRaw) {
+    static httpGet(url, params) {
         return this.httpSend({
             method: 'get',
             url: url,
             params: params
-        }, isRaw);
+        });
     }
 
-    static httpPost(url, data, isRaw) {
+    static httpPost(url, data) {
         return this.httpSend({
             method: 'post',
             url: url,
             data: data
-        }, isRaw);
+        });
     }
 
-    static httpPut(url, data, isRaw) {
+    static httpPut(url, data) {
         return this.httpSend({
             method: 'put',
             url: url,
             data: data
-        }, isRaw);
+        });
     }
 
-    static httpDelete(url, params, isRaw) {
+    static httpDelete(url, params) {
         return this.httpSend({
-            method: 'POST',
+            method: 'post',
             url: url,
             params: params
-        }, isRaw);
-    }
-    static httpDownload(url, params) {
-        return new Promise((resolve, reject) => {
-            axios({
-                method: 'get',
-                url: url,
-                params: params
-            }).then(res => {
-                if (res.headers && (res.headers['content-type'] === 'application/vnd.ms-execl')) {
-                    let iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = res.request.responseURL;
-                    iframe.onload = function () {
-                        document.body.removeChild(iframe)
-                    }
-                    document.body.appendChild(iframe);
-                    return
-                }
-            }, error => {
-            });
-        })
-
+        });
     }
 }

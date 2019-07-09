@@ -3,7 +3,7 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
-const NavService = require('../../../src/services/client/nav.service');
+const NavService = require('../../../src/services/nav/nav.service');
 class Header extends Base{
     constructor(){
         super('header');

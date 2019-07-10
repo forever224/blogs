@@ -1,2 +1,2 @@
-[2019-07-09T10:50:48.712] [ERROR] error - [ 'get: /%s 没有实现！', '/admin' ]
-[2019-07-09T10:50:48.731] [ERROR] error - [ '====/admin====  NOT IMPLEMENT ==> /admin' ]
+[2019-07-10T11:15:29.853] [ERROR] error - [ '====/nav/delete====  adminService is not defined' ]
+[2019-07-10T11:30:14.166] [ERROR] error - [ '====/nav/delete====  this.dbModel.delete is not a function' ]

@@ -1,6 +1,6 @@
 <template>
     <div class="left-nav">
-        <el-menu default-active="/home" :router="true" class="left-nav-menu" background-color="#304156" text-color="#bfcbd9" active-text-color="#f4f4f5" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-menu :default-active="defaultActive" :router="true" class="left-nav-menu" background-color="#304156" text-color="#bfcbd9" active-text-color="#f4f4f5" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
             <template v-for="menu in menus" :index="menu.path">
                 <el-menu-item :index="menu.path" v-if="!menu.children">
                     <i :class="menu.icon"></i>
@@ -26,15 +26,16 @@
         props:['isCollapse'],
         data() {
             return {
-                menus
+                menus,
+                defaultActive:'/home'
             };
         },
         created(){
-
+            this.defaultActive = this.$route.path;
         },
         watch:{
-            isCollapse(){
-
+            $route(){
+                this.defaultActive = this.$route.path;
             }
         },
         methods: {

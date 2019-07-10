@@ -7,7 +7,7 @@ module.exports = {
     // 输出文件目录
     outputDir: './dist',
     devServer: {
-        port: 80,
+        port: 8080,
         proxy: 'http://127.0.0.1:80', // 设置代理
     },
     chainWebpack(config) {

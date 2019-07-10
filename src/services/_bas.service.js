@@ -117,7 +117,7 @@ class basService {
      * @return {Promise}
      */
     remove(filter) {
-        return this.dbModel.remove(filter).exec();
+        return this.dbModel.deleteMany(filter).exec();
     }
 }
 

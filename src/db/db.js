@@ -13,7 +13,7 @@ const mongoose = require('mongoose'),
  * 连接
  */
 mongoose.connect(DB_URL, options);
-
+mongoose.set('useFindAndModify', false);
 /**
  * 连接成功
  */

@@ -16,8 +16,7 @@ class Ctr extends BaseCtr{
         return service.update(ctx.data);
     }
     deleteNav(ctx){
-        console.log(ctx.data);
-        return adminService.createNew(ctx.data);
+        return service.remove(ctx.data);
     }
 }
 

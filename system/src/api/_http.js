@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { MessageBox, Message } from 'element-ui'
+import {getToken, setToken, removeToken} from '@/utils/auth'
 
 export default class Http {
     /**
@@ -9,16 +10,9 @@ export default class Http {
      */
     static httpSend(params) {
         //每次都会去查token是不是存在的,防止刷新数据丢失
-        axios.defaults.headers.common['authorization'] = window.sessionStorage.authorization || axios.defaults.headers.common['authorization'];
-        axios.defaults.headers.common['phone'] = window.sessionStorage.phone || axios.defaults.headers.common['phone'];
+        axios.defaults.headers.common['authorization'] = getToken();
         return new Promise((resolve, reject) => {
             axios(params).then(res => {
-                console.log(Message, 'Message');
-                Message({
-                    message: res.message || 'error',
-                    type: 'error',
-                    duration: 5 * 1000
-                })
                 var data = res.data;
                 if (data.isSuccess) {
                     resolve(data.data);
@@ -47,8 +41,9 @@ export default class Http {
     static validateLogin(status) {
         switch (status) {
             case 401:
-                console.log('请登录！',window.location.href.match(/^http.*:\d{2}/));
-                window.location.href = window.location.href.match(/^http.*:\d{2}/)[0] + '/#/login';
+                removeToken();
+                // console.log('请登录！',window.location.href.match(/^http.*:\d{2}/));
+                window.location.href = window.location.href.match(/^http.*:\d{2,4}/)[0] + '/#/login';
                 break;
         }
     }

@@ -25,6 +25,8 @@ let checkOauth = (disallow, originalUrl) => {
                     ctx.status = 401;
                     ctx.response.body = { isSuccess: false, error: '请登录！', reLogin: true };
                 }else{
+                    log.created = new Date();
+                    adminLogsService.update(log);
                     await next();
                 }
             }else{

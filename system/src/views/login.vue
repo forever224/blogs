@@ -3,7 +3,7 @@
         <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on"
                  label-position="left">
             <div class="title-container">
-                <h3 class="title">Login Form</h3>
+                <h3 class="title">后台管理系统</h3>
             </div>
             <el-form-item prop="username">
                 <span class="svg-container">
@@ -41,13 +41,13 @@
             </el-form-item>
 
             <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;"
-                       @click.native.prevent="handleLogin">Login
+                       @click.native.prevent="handleLogin">登录
             </el-button>
 
-            <div class="tips">
-                <span style="margin-right:20px;">username: admin</span>
-                <span> password: any</span>
-            </div>
+            <!--<div class="tips">-->
+            <!--<span style="margin-right:20px;">username: admin</span>-->
+            <!--<span> password: any</span>-->
+            <!--</div>-->
 
         </el-form>
     </div>
@@ -55,10 +55,13 @@
 
 <script>
     import {validUsername} from '@/utils/validate'
-    import { getToken, setToken, removeToken } from '@/utils/auth'
+    import {getToken, setToken, removeToken} from '@/utils/auth'
+    import { mapActions } from 'vuex';
+
     export default {
         name: 'Login',
         data() {
+            // 校验输入的用户名
             const validateUsername = (rule, value, callback) => {
                 if (!validUsername(value)) {
                     callback(new Error('Please enter the correct user name'))
@@ -66,6 +69,7 @@
                     callback()
                 }
             };
+            // 校验输入的密码
             const validatePassword = (rule, value, callback) => {
                 if (value.length < 6) {
                     callback(new Error('The password can not be less than 6 digits'))
@@ -88,6 +92,7 @@
             }
         },
         methods: {
+            ...mapActions('admin', ['login']),
             showPwd() {
                 if (this.passwordType === 'password') {
                     this.passwordType = ''
@@ -98,12 +103,13 @@
                     this.$refs.password.focus()
                 })
             },
-            handleLogin() {
-                this.$refs.loginForm.validate(valid => {
+            async handleLogin() {
+                await this.$refs.loginForm.validate(async valid => {
                     if (valid) {
                         this.loading = true;
-                        setToken('1111token');
-                        this.$router.push({path: '/'});
+                        let info = await this.login({ phone: this.loginForm.username, password: this.loginForm.password});
+                        setToken(info.oauth);
+                        this.$router.push({path: this.$route.query.redirect || '/home'});
                     } else {
                         console.log('error submit!!');
                         return false

@@ -36,6 +36,7 @@ app.use(static( { dir:"./upload", router:'/file' } ));
 app.use(static( { dir:"./views/css", router:'/views/css' } ));
 app.use(static( { dir:"./views/js", router:'/views/js' } ));
 app.use(static( { dir:"./views/images", router:'/views/images' } ));
+app.use(static( { dir:"./uploads", router:'/uploads' } ));
 
 
 

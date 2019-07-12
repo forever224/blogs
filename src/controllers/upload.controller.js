@@ -16,7 +16,7 @@ class AdminCtr extends BaseCtr{
      */
     uploadImg(ctx){
         let type = ctx.req.headers.type || 'info';
-        let filePath = path.join(__dirname, '../../upload');
+        let filePath = path.join(__dirname, '../../uploads');
         let name = new Date().getTime() + `_${type}_` + Math.floor(Math.random()*10000);
         return uploadService.uploadFile(ctx, filePath, name);
     }

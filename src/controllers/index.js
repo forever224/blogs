@@ -5,8 +5,10 @@ let UploadCtr = require('./upload.controller'),
     uploadCtr = new UploadCtr();
 let ArticleCtr = require('./article.controller'),
     articleCtr = new ArticleCtr();
-let NavCtr = require('./nav/nav.controller'),
+let NavCtr = require('./nav.controller'),
     navCtr = new NavCtr();
+let BlogCtr = require('./nav.controller'),
+    blogCtr = new BlogCtr();
 
 
 class IndexCtr{
@@ -17,6 +19,7 @@ class IndexCtr{
         this.routerBuild('/upload', uploadCtr.router);
         this.routerBuild('/article', articleCtr.router);
         this.routerBuild('/nav', navCtr.router);
+        this.routerBuild('/blog', blogCtr.router);
     }
     routerBuild(namespace, ctr){
         this.router.disallow.push(namespace);

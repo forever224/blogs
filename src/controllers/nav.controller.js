@@ -1,5 +1,5 @@
-const BaseCtr = require('../_bas.controller');
-const Service = require('../../services/nav/nav.service'),
+const BaseCtr = require('./_bas.controller');
+const Service = require('../services/nav.service'),
     service = new Service();
 
 class Ctr extends BaseCtr{

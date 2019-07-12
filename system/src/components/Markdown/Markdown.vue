@@ -1,22 +1,18 @@
 <template>
     <div class="markdown">
-        <slot name="header">header</slot>
-        <slot></slot>
-        <slot name="footer">footer</slot>
-        <mavonEditor ref=md :toolbars="markdownOption" @imgAdd="imgAdd" v-model="html"></mavonEditor>
-        <button @click="onSubmit">提交</button>
+        <mavonEditor ref=md :toolbars="markdownOption" @imgAdd="imgAdd" @change="change" v-model="html"></mavonEditor>
     </div>
 </template>
 <script type="text/javascript">
     import { mavonEditor } from 'mavon-editor'
+    import axios from 'axios';
     export default {
         components:{
             mavonEditor
         },
-        props:['arr'],
+        props:['content'],
         data(){
             return {
-                html: '',
                 markdownOption: {
                     bold: true, // 粗体
                     italic: true, // 斜体
@@ -52,18 +48,37 @@
                     subfield: true, // 单双栏模式
                     preview: true, // 预览
                 },
+                html:'初始值'
             }
         },
         created(){
-
+            this.html = this.content;
         },
         methods:{
             onSubmit(){
                 console.log(this.html);
                 console.log(this.$refs.md.d_render);
             },
-            imgAdd(filename, imgfile){
-                console.log(filename, imgfile);
+            imgAdd(pos, $file){
+                // 第一步.将图片上传到服务器.
+                var formdata = new FormData();
+                formdata.append('file', $file);
+                axios({
+                    url: '/upload/img',
+                    method: 'post',
+                    data: formdata,
+                    headers: { 'Content-Type': 'multipart/form-data', 'type': 'blog' },
+                }).then((url) => {
+                    // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+                    // $vm.$img2Url 详情见本页末尾
+                    // $vm.$img2Url(pos, url);
+                    url = '/uploads/' + url.data.data;
+                    console.log(pos,'pospospospospospospospos');
+                    this.$refs.md.$img2Url(pos, url)
+                })
+            },
+            change(value, render){
+                this.$emit('update',{ value, render })
             }
         },
     }

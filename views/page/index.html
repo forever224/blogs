@@ -65,118 +65,47 @@
             <div class="box">
                 <div class="box-tit"><span>最新博文</span></div>
                 <div class="box-nr">
+                    <% for(var i = 0; i<list.length; i++){%>
                     <div class="new-item">
                         <div class="new-item-tit">
                             <div class="new-item-time">
-                                2019-07-05
+                                <%= list[i].created %>
                                 <img src="/views/images/photo.png" alt="">
                             </div>
-                            <a href="/blog?id=123456">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
+                            <a href="/info?id=<%= list[i]._id %>"><%= list[i].title %></a>
                         </div>
-                        <div class="new-item-img"><a href="/blog?id=123456"><img src="/views/images/item.jpg" alt=""></a></div>
+                        <div class="new-item-img"><a href="/info?id=<%= list[i]._id %>"><img src="<%= list[i].intro %>" alt=""></a></div>
                         <div class="new-item-desc">
-                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
+                            <%= list[i].desc %>
                         </div>
                         <div class="clear"></div>
                         <div class="new-item-foot">
                             <div class="new-item-key">
-                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
+                                <% for(var j = 0; j<list[i].key.length; j++) {%>
+                                <a class="btn" href="?key=<%= list[i].key[j] %>"><%= list[i].key[j] %></a>
+                                <% } %>
                             </div>
                             <button class="new-item-btn">阅读全文</button>
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <div class="new-item">
-                        <div class="new-item-tit">
-                            <div class="new-item-time">
-                                2019-07-05
-                                <img src="/views/images/photo.png" alt="">
-                            </div>
-                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
-                        </div>
-                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
-                        <div class="new-item-desc">
-                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
-                        </div>
-                        <div class="clear"></div>
-                        <div class="new-item-foot">
-                            <div class="new-item-key">
-                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
-                            </div>
-                            <button class="new-item-btn">阅读全文</button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="new-item">
-                        <div class="new-item-tit">
-                            <div class="new-item-time">
-                                2019-07-05
-                                <img src="/views/images/photo.png" alt="">
-                            </div>
-                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
-                        </div>
-                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
-                        <div class="new-item-desc">
-                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
-                        </div>
-                        <div class="clear"></div>
-                        <div class="new-item-foot">
-                            <div class="new-item-key">
-                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
-                            </div>
-                            <button class="new-item-btn">阅读全文</button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="new-item">
-                        <div class="new-item-tit">
-                            <div class="new-item-time">
-                                2019-07-05
-                                <img src="/views/images/photo.png" alt="">
-                            </div>
-                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
-                        </div>
-                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
-                        <div class="new-item-desc">
-                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
-                        </div>
-                        <div class="clear"></div>
-                        <div class="new-item-foot">
-                            <div class="new-item-key">
-                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
-                            </div>
-                            <button class="new-item-btn">阅读全文</button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="new-item">
-                        <div class="new-item-tit">
-                            <div class="new-item-time">
-                                2019-07-05
-                                <img src="/views/images/photo.png" alt="">
-                            </div>
-                            <a href="#">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a>
-                        </div>
-                        <div class="new-item-img"><a href="#"><img src="/views/images/item.jpg" alt=""></a></div>
-                        <div class="new-item-desc">
-                            就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深
-                        </div>
-                        <div class="clear"></div>
-                        <div class="new-item-foot">
-                            <div class="new-item-key">
-                                <a class="btn" href="#">前端开发</a><a class="btn" href="#">后端开发</a>
-                            </div>
-                            <button class="new-item-btn">阅读全文</button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+                    <%}%>
                 </div>
             </div>
             <div class="pagination">
-                <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-icon-test1"></i></a>
-                <span class="page-number current">1</span>
-                <a class="page-number" href="#">2</a>
-                <a class="extend next" rel="next" href="#"><i class="iconfont icon-icon-test3"></i></a>
+                <% if(pageNum!=1){%>
+                <a class="extend prev" rel="prev" href="<%= str + (pageNum-1)  %>"><i class="iconfont icon-icon-test1"></i></a>
+                <% } %>
+                <% for(var i = 1; i <= num; i++){%>
+                    <% if(i === pageNum){%>
+                        <span class="page-number current"><%= i %></span>
+                    <% }else{ %>
+                        <a class="page-number" href="<%= str + i %>"><%= i %></a>
+                    <% } %>
+                <% } %>
+                <% if(pageNum!=num){%>
+                <a class="extend next" rel="next" href="<%= str + (pageNum+1)  %>"><i class="iconfont icon-icon-test3"></i></a>
+                <% } %>
             </div>
         </div>
         <div class="clear"></div>

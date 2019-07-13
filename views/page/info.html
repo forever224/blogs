@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('meta.html') %>
+    <style>
+        .blog{padding:0 40px;}
+        .blog h1{font-size: 26px;text-align: center;padding:40px 0 15px;}
+        .blog-time{text-align: center;padding-bottom:30px;}
+        .blog-updown{padding:20px 0;margin: 40px 0 0;border-top:1px solid #f1f1f1;line-height: 30px;}
+        .blog-updown i{float: right;}
+    </style>
+</head>
+<body>
+<div class="main">
+    <%- header %>
+    <div class="content">
+        <div class="blog">
+            <h1><%= blog.title %></h1>
+            <div class="blog-time">发表于：<%= blog.created %></div>
+            <div class="blog-main">
+                <%- blog.render %>
+            </div>
+            <div class="blog-updown">
+                <% if(prev.href){ %>
+                <p>上一篇：<i class="iconfont icon-icon-test3"></i><a href="<%= prev.href %>"><%= prev.title %></a></p>
+                <% } %>
+                <% if(next.href){ %>
+                <p>下一篇：<i class="iconfont icon-icon-test3"></i><a href="<%= next.href %>"><%= next.title %></a></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <%- footer %>
+</div>
+</body>
+<script src="/views/js/jquery.js"></script>
+<script>
+
+</script>
+</html>

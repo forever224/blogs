@@ -108,7 +108,7 @@ class basService {
      * @return {Promise}
      */
     count(filter) {
-        return this.dbModel.count(filter).exec();
+        return this.dbModel.countDocuments(filter).exec();
     }
 
     /**

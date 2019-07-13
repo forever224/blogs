@@ -17,7 +17,9 @@ class Header extends Base{
     async getHtml(href){
         await this.init();
         let html = fs.readFileSync(path.resolve( __dirname + `/view.html`)).toString('utf-8');
+        href = href.replace(/\?.*/,'');
         let item = _.find(this.data.nav, { href });
+        console.log(href)
         if(item){
             item.cur = true;
         }

@@ -4,19 +4,33 @@ const Service = require('../services/blog.service'),
 
 class Ctr extends BaseCtr{
     constructor(){
-        super('/nav');
+        super('/blog');
         this.addRoute('get', this.getList, '/list');
-        this.addRoute('post', this.addNav, '/add');
-        this.addRoute('post', this.deleteNav, '/delete');
+        this.addRoute('get', this.getItem, '/item');
+        this.addRoute('get', this.getTags, '/tags');
+        this.addRoute('get', this.getGroup, '/group');
+        this.addRoute('post', this.add, '/add');
+        this.addRoute('post', this.delete, '/delete');
     }
-    getList(){
-        return service.find();
+    async getList({ pageSize, pageNum }){
+        let list = await service.find({}, '', pageSize, pageNum);
+        let total = await service.count();
+        return { list, total };
     }
-    addNav(ctx){
+    getItem(ctx){
+        return service.findOne(ctx.params);
+    }
+    add(ctx){
         return service.update(ctx.data);
     }
-    deleteNav(ctx){
+    delete(ctx){
         return service.remove(ctx.data);
+    }
+    getTags(){
+        return service.getTags();
+    }
+    getGroup(){
+        return service.getGroup();
     }
 }
 

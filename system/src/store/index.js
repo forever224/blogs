@@ -6,12 +6,14 @@ import state from './state';
 import getters from './getters';
 import admin from './modules/admin'
 import nav from './modules/nav'
+import blog from './modules/blog'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules:{
         admin,
-        nav
+        nav,
+        blog
     },
     state,
     getters,

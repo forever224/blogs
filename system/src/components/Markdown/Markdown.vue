@@ -10,7 +10,7 @@
         components:{
             mavonEditor
         },
-        props:['content'],
+        props:['value'],
         data(){
             return {
                 markdownOption: {
@@ -52,7 +52,12 @@
             }
         },
         created(){
-            this.html = this.content;
+
+        },
+        watch:{
+            value: function () {
+                this.html = this.value;
+            }
         },
         methods:{
             onSubmit(){
@@ -85,4 +90,5 @@
 </script>
 <style lang="scss">
     @import "~mavon-editor/dist/css/index.css";
+    .markdown{width: 99%;}
 </style>

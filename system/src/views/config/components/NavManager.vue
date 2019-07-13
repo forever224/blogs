@@ -62,7 +62,7 @@
             ...mapActions('nav',['getList', 'addNav', 'deleteNav']),
             async init(){
                 let res = await this.getList();
-                this.tableData = res;
+                this.tableData = res.data;
             },
             handleEdit(index, row) {
                 this.visible = true;

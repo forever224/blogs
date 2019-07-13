@@ -7,7 +7,7 @@ let ArticleCtr = require('./article.controller'),
     articleCtr = new ArticleCtr();
 let NavCtr = require('./nav.controller'),
     navCtr = new NavCtr();
-let BlogCtr = require('./nav.controller'),
+let BlogCtr = require('./blog.controller'),
     blogCtr = new BlogCtr();
 
 

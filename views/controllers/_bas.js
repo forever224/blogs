@@ -12,10 +12,11 @@ class BasController {
         this.router.get(uri, this.httpWrapper(htmlName, handler));
     }
     httpWrapper(htmlName, handler) {
-        handler.bind(this);
         return async (ctx) => {
             try{
-                let result = handler(ctx);
+                ctx.params = ctx.query;
+                ctx.data = ctx.request.body;
+                let result = handler.call(this, ctx);
                 let data = null;
                 if (result instanceof Promise) {
                     data = await result;

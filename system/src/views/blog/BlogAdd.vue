@@ -17,28 +17,41 @@
                         :show-file-list="false"
                         :on-success="handleAvatarSuccess"
                         :before-upload="beforeAvatarUpload">
-                    <img v-if="form.intro" :src="form.intro" class="avatar">
+                    <img v-if="intro" :src="form.intro" class="avatar">
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
             <el-form-item label="标签">
-                <el-tag
-                        v-for="tag in tags"
-                        :key="tag.name"
-                        effect="dark"
-                        :type="tag.type">
-                    {{tag.name}}
-                </el-tag>
+                <el-select
+                        v-model="form.key"
+                        style="display: block;"
+                        multiple
+                        filterable
+                        allow-create
+                        default-first-option
+                        @change="onTags"
+                        placeholder="请选择博文标签">
+                    <el-option
+                            v-for="item in tags"
+                            :key="item"
+                            :label="item"
+                            :value="item">
+                    </el-option>
+                </el-select>
             </el-form-item>
             <el-form-item label="详情内容">
-                <Markdown :content="form.value" @update="update"></Markdown>
+                <Markdown :value="form.value" @update="update"></Markdown>
             </el-form-item>
-
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                <el-button>取消</el-button>
+            </el-form-item>
         </el-form>
     </div>
 </template>
 <script>
-    import Markdown from '@/components/Markdown/Markdown.vue'
+    import Markdown from '@/components/Markdown/Markdown.vue';
+    import { mapActions } from 'vuex';
     export default {
         name:'BlogAdd',
         components: { Markdown },
@@ -47,42 +60,57 @@
                 form:{
                     title:'',
                     desc:'',
-                    icon:'',
+                    intro:'',
                     keywords:'',
-                    content:'',
-                    value:'**第三方**'
+                    key:[],
+                    render:'',
+                    value:''
                 },
+                intro:'',
                 imageUrl: '',
                 dialogVisible: false,
-                tags:[
-                    { name: '标签一', type: '' },
-                    { name: '标签二', type: 'success' },
-                    { name: '标签三', type: 'info' },
-                    { name: '标签四', type: 'warning' },
-                    { name: '标签五', type: 'danger' }
-                ]
+                tags:['HTML','CSS', 'JavaScript', '敏捷开发']
             }
         },
+        async created(){
+            let _id = this.$route.query.id;
+            if(_id){
+                let res = await this.getItem({ _id });
+                this.form = res.data;
+                this.intro = this.form.intro;
+            }
+            let tags = await this.getTags();
+            this.tags = tags.data;
+        },
         methods: {
+            ...mapActions('blog',['addBlog', 'getItem', 'getTags']),
             update(val){
                 this.form.render = val.render;
                 this.form.value = val.value;
             },
+            onSubmit(){
+                this.addBlog(this.form).then(res => {
+                    this.$message({
+                        message: '恭喜你，添加文章成功！！',
+                        type: 'success'
+                    });
+                    this.$router.push('blog_list')
+                });
+            },
+            onTags(tag){
+                console.log(tag)
+            },
             handleAvatarSuccess(res, file) {
-                console.log()
+                console.log(res.data,'ssssssssssss')
                 this.form.intro = '/uploads/' + res.data;
+                this.intro = this.form.intro;
             },
             beforeAvatarUpload(file) {
-                const isJPG = file.type === 'image/jpeg';
                 const isLt2M = file.size / 1024 / 1024 < 2;
-
-                if (!isJPG) {
-                    this.$message.error('上传头像图片只能是 JPG 格式!');
-                }
                 if (!isLt2M) {
                     this.$message.error('上传头像图片大小不能超过 2MB!');
                 }
-                return isJPG && isLt2M;
+                return isLt2M;
             }
         }
     }

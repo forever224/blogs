@@ -26,25 +26,14 @@
     <div class="content">
         <div class="archives">
             <dl>
-                <dt>2019</dt>
+                <% for(var i=0; i<group.length; i++){ %>
+                <dt><%= group[i]._id %></dt>
                 <dd>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
+                    <% for(var j=0; j<group[i].list.length; j++){ %>
+                    <p><a href="/info?id=<%= group[i].list[j]._id %>"><i class="iconfont icon-icon-test3"></i><span><%= group[i].list[j].time %></span><%= group[i].list[j].title %></a></p>
+                    <% } %>
                 </dd>
-                <dt>2018</dt>
-                <dd>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><i class="iconfont icon-icon-test3"></i><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                </dd>
-                <dt>2017</dt>
-                <dd>
-                    <p><a href="/blog?id=123456"><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                    <p><a href="/blog?id=123456"><span>11-20</span>这些年我看到的所谓区块链</a></p>
-                </dd>
+                <% } %>
             </dl>
         </div>
     </div>

@@ -1,2 +1,2 @@
-[2019-07-10T11:15:29.853] [ERROR] error - [ '====/nav/delete====  adminService is not defined' ]
-[2019-07-10T11:30:14.166] [ERROR] error - [ '====/nav/delete====  this.dbModel.delete is not a function' ]
+[2019-07-13T12:26:32.255] [ERROR] error - [ '====/blog?id=5d28ba71208132810f302da9====  Cannot read property \'toObject\' of null' ]
+[2019-07-13T12:26:40.969] [ERROR] error - [ '====/blog?id=5d28ba71208132810f302da9====  Cannot read property \'toObject\' of null' ]

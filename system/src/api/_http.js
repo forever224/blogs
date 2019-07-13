@@ -15,7 +15,7 @@ export default class Http {
             axios(params).then(res => {
                 var data = res.data;
                 if (data.isSuccess) {
-                    resolve(data.data);
+                    resolve(data);
                 } else {
                     reject(data.message || data.error);
                 }

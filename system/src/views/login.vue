@@ -104,7 +104,7 @@
                     if (valid) {
                         this.loading = true;
                         let info = await this.login({ phone: this.loginForm.username, password: this.loginForm.password});
-                        setToken(info.oauth);
+                        setToken(info.data.oauth);
                         this.$router.push({path: this.$route.query.redirect || '/home'});
                     } else {
                         console.log('error submit!!');

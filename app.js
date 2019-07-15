@@ -31,6 +31,7 @@ app.use(static( { dir:"./admin", router:'/admin' } ));
 app.use(static( { dir:"./admin/css", router:'/css' } ));
 app.use(static( { dir:"./admin/js", router:'/js' } ));
 app.use(static( { dir:"./admin/img", router:'/img' } ));
+app.use(static( { dir:"./admin/fonts", router:'/fonts' } ));
 app.use(static( { dir:"./upload", router:'/file' } ));
 //前台静态资源
 app.use(static( { dir:"./views/css", router:'/views/css' } ));

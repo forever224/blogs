@@ -5,7 +5,7 @@ function resolve(dir) {
 }
 module.exports = {
     // 输出文件目录
-    outputDir: './dist',
+    outputDir: '../admin',
     devServer: {
         port: 8080,
         proxy: 'http://127.0.0.1:80', // 设置代理

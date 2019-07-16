@@ -21,7 +21,7 @@
         .new-item-key{float:left;}
         .new-item-key a{display: inline-block;height:26px;line-height: 26px;border-radius: 5px;background: #f1f1f1;padding:0 10px;margin-right:10px;}
         .new-item-btn{background: #3a8ee6; color:#fff;border:0;padding:5px 20px;float: right; transition: all .5s;cursor: pointer;}
-        .new-item-btn:hover{background: #c00;}
+        .new-item-btn:hover{background: #c00;color:#fff;}
         .pagination {margin: 0px 0 40px;text-align: center;border-top: 1px solid #eee;}
         .pagination .prev, .pagination .next, .pagination .page-number{ display: inline-block; position: relative;
             top: -1px;
@@ -74,7 +74,9 @@
                             </div>
                             <a href="/info?id=<%= list[i]._id %>"><%= list[i].title %></a>
                         </div>
+                        <% if(list[i].intro){ %>
                         <div class="new-item-img"><a href="/info?id=<%= list[i]._id %>"><img src="<%= list[i].intro %>" alt=""></a></div>
+                        <%}%>
                         <div class="new-item-desc">
                             <%= list[i].desc %>
                         </div>
@@ -85,7 +87,7 @@
                                 <a class="btn" href="?key=<%= list[i].key[j] %>"><%= list[i].key[j] %></a>
                                 <% } %>
                             </div>
-                            <button class="new-item-btn">阅读全文</button>
+                            <a href="/info?id=<%= list[i]._id %>" class="new-item-btn">阅读全文</a>
                         </div>
                         <div class="clear"></div>
                     </div>

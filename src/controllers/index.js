@@ -9,6 +9,8 @@ let NavCtr = require('./nav.controller'),
     navCtr = new NavCtr();
 let BlogCtr = require('./blog.controller'),
     blogCtr = new BlogCtr();
+let ConfigCtr = require('./config.controller'),
+    configCtr = new ConfigCtr();
 
 
 class IndexCtr{
@@ -20,6 +22,7 @@ class IndexCtr{
         this.routerBuild('/article', articleCtr.router);
         this.routerBuild('/nav', navCtr.router);
         this.routerBuild('/blog', blogCtr.router);
+        this.routerBuild('/config', configCtr.router);
     }
     routerBuild(namespace, ctr){
         this.router.disallow.push(namespace);

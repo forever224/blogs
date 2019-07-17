@@ -4,16 +4,19 @@
             <el-tab-pane label="主导航管理" name="first">
                 <NavManager></NavManager>
             </el-tab-pane>
-            <el-tab-pane label="全局配置" name="second">全局配置</el-tab-pane>
+            <el-tab-pane label="首页SEO设置" name="second">
+                <IndexSeo></IndexSeo>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
 
 <script>
     import NavManager from './components/NavManager'
+    import IndexSeo from './components/IndexSeo'
     export default {
         components:{
-            NavManager
+            NavManager, IndexSeo
         },
         data() {
             return {

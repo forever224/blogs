@@ -1,6 +1,8 @@
 const BaseCtr = require('./_bas');
 const BlogService = require('../../src/services/blog.service');
 const blogService = new BlogService();
+const ConfigService = require('../../src/services/config.service');
+const configService = new ConfigService();
 const _ = require('lodash');
 class Controller extends BaseCtr {
     constructor() {
@@ -19,11 +21,12 @@ class Controller extends BaseCtr {
             item = item.toObject();
             item.created = this.formatDate('yyyy-MM-dd', new Date(item.created));
             list.push(item);
-        })
+        });
+        let config = await configService.findOne({ key: 'index-seo' });
         let total = await blogService.count(params);
         let num = Math.ceil(total / pageSize);
         let str = key ? '?key=' + key + '&pageNum=' : '?pageNum=';
-        return {list, num, pageNum, str};
+        return {list, num, pageNum, str, title: config.indexTitle, desc: config.indexDesc, keywords: config.indexKeywords};
     }
     test(){
         console.log('test');

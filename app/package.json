@@ -16,7 +16,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.5.4",
     "mavon-editor": "^2.7.4",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "quill-image-extend-module": "^1.1.2",
     "sass-loader": "^7.0.1",
     "vue-quill-editor": "^3.0.6",

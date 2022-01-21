@@ -17,7 +17,7 @@
     "koa-static": "^5.0.0",
     "koa-static-router": "^1.2.0",
     "koa-views": "^6.1.5",
-    "log4js": "^3.0.6",
+    "log4js": "^6.4.0",
     "moment": "^2.22.2",
     "mongoose": "^5.3.14",
     "path": "^0.12.7"
